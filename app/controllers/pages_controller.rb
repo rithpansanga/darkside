@@ -6,6 +6,8 @@ class PagesController <ApplicationController
 	end
 
 	def home
+		
+		@Teams = Team.all
 
 	end
 

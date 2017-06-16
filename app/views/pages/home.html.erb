@@ -1,1 +1,24 @@
-<h1>This is home</h1>
+<h1> Listing all teams</h1>
+
+
+<table>
+	<tr>
+	   <th>Name</th>
+	   <th>Coach</th>
+	   <th>League</th>
+	</tr>
+
+	<% @Teams.each do |team| %>
+	<tr>
+	  <td><%= team.name %></td>
+	  <td><%= team.coach %></td>
+	  <td><%= team.league.name %></td>
+	  
+	  
+	</tr>
+
+	<% end %>
+	
+
+
+</table>
