@@ -10,6 +10,7 @@ class PagesController <ApplicationController
 		@Teams = Team.all
 		@Homes = Home.all
 		@Aways = Away.all
+		@Matches = Match.all
 
 	end
 

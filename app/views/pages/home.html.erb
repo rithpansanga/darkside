@@ -5,14 +5,16 @@
 	<tr>
 	   
 	   <th>Home</th>
+	   <th>Score</th>
 	   <th>Away</th>
 	</tr>
 
-	<% @Homes.each do |home| and @Aways.each do |away| %>
+	<% @Matches.each do |match| %>
 
 	<tr>
-	  <td><%= home.team.name %></td>
-	  <td><%= away.team.name %></td>
+	  <td><%= match.home.team.name %></td>
+	  <td><%= match.result %></td>
+	  <td><%= match.away.team.name %></td>
 	 
 	  
 	<% end %>
