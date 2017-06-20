@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616181318) do
+ActiveRecord::Schema.define(version: 20170620125900) do
+
+  create_table "aways", force: :cascade do |t|
+    t.string  "stadium"
+    t.integer "team_id"
+  end
+
+  create_table "homes", force: :cascade do |t|
+    t.string  "stadium"
+    t.integer "team_id"
+  end
 
   create_table "leagues", force: :cascade do |t|
     t.string   "name"

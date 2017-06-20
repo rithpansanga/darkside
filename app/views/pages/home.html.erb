@@ -3,22 +3,31 @@
 
 <table>
 	<tr>
-	   <th>Name</th>
-	   <th>Coach</th>
-	   <th>League</th>
+	   
+	   <th>Home</th>
+	   <th>Away</th>
 	</tr>
 
-	<% @Teams.each do |team| %>
+	<% @Homes.each do |home| and @Aways.each do |away| %>
+
 	<tr>
-	  <td><%= team.name %></td>
-	  <td><%= team.coach %></td>
-	  <td><%= team.league.name %></td>
+	  <td><%= home.team.name %></td>
+	  <td><%= away.team.name %></td>
+	 
 	  
-	  
-	</tr>
-
 	<% end %>
 	
+	
+	
+
+	
+	</tr>
+	
+	
+	
+	  
+
+
 
 
 </table>

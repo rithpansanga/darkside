@@ -8,6 +8,8 @@ class PagesController <ApplicationController
 	def home
 		
 		@Teams = Team.all
+		@Homes = Home.all
+		@Aways = Away.all
 
 	end
 
