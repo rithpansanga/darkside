@@ -1,2 +1,35 @@
+$navbar-default-bg: black;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+
+.jumbotron{
+	background-image: asset-url('75084.jpg');
+	background-size: cover;
+
+	height: 650px;
+
+	color: white;
+}
+
+.center{
+	text-align:center;
+}
+
+
+
+.white{
+	color: white;
+}
+
+.button {
+    
+    color: white;
+   
+}
+
+#alpha{
+	color: white;
+}
