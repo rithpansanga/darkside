@@ -1,0 +1,36 @@
+
+<% if @match.errors.any? %>
+
+
+<ul>
+	<% @match.errors.full_messages.each do |msg| %>
+
+	<li><%= msg %></li>
+
+	<% end %>
+</ul>
+
+
+<% end %>
+
+
+<%= form_for @match do |f| %>
+
+ 	<p>
+ 		<%= f.label :result %>
+ 		<%= f.text_field :result %>
+ 		<%= f.collection_select(:home_id, Home.all, :id, :team_name) %>
+ 		<%= f.collection_select(:away_id, Away.all, :id, :team_name) %>
+ 		
+ 	</p>
+
+ 	<p>
+
+ 		<%= f.submit %>
+
+ 	</p>
+
+
+<% end %>
+
+<%= link_to "Back to League listing", leagues_path %>

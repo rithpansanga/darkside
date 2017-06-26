@@ -1,0 +1,12 @@
+<h1>Showing </h1>
+
+<p>
+	Home: <%= @match.home.team.name %> <br>
+	Score: <%= @match.result %> <br>
+	Away: <%= @match.away.team.name %> 
+
+</p>
+
+
+<%= link_to "Edit this match" , edit_match_path(@match) %> |
+<%= link_to "Back to match listing", matches_path %>
