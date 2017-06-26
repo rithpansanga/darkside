@@ -1,0 +1,32 @@
+<h1> Listing Aways</h1>
+<%= link_to "Create new away", new_away_path %>
+
+
+<table>
+	
+<tr>
+	
+<th>Stadium</th>
+<th>Team</th>
+</tr>
+
+
+<% @aways.each do |away| %>
+
+<tr>
+
+	<td><%= away.stadium %> </td>
+	<td><%= away.team.name %> </td>
+	<td><%= link_to "Edit", edit_away_path(away) %></td>
+	<td><%= link_to "Show", away_path(away) %></td>
+	<td><%= link_to "Delete", away_path(away), method: :delete, data:{confirm: "Are you sure?"} %></td>
+	
+
+</tr>
+<% end %>
+
+
+</table>
+
+<br><br>
+<%= link_to "Back to League listing", leagues_path %>

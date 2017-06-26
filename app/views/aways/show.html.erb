@@ -1,0 +1,11 @@
+<h1>Showing </h1>
+
+<p>
+	Name: <%= @away.team.name %><br>
+	Stadium: <%= @away.stadium %>
+
+</p>
+
+
+<%= link_to "Edit this away" , edit_away_path(@away) %> |
+<%= link_to "Back to aways listing", aways_path %>

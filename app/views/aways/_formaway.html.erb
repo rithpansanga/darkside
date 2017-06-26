@@ -1,0 +1,36 @@
+
+
+<% if @away.errors.any? %>
+
+
+<ul>
+	<% @away.errors.full_messages.each do |msg| %>
+
+	<li><%= msg %></li>
+
+	<% end %>
+</ul>
+
+
+<% end %>
+
+
+<%= form_for @away do |f| %>
+
+ 	<p>
+ 		<%= f.label :stadium %>
+ 		<%= f.text_field :stadium %>
+ 		<%= f.collection_select :team_id, Team.all, :id, :name %>
+ 		
+ 		
+ 	</p>
+
+ 	<p>
+
+ 		<%= f.submit %>
+
+ 	<p>
+
+<% end %>
+
+<%= link_to "Back to Away listing", aways_path %>
