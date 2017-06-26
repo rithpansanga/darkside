@@ -1,0 +1,11 @@
+<h1>Showing </h1>
+
+<p>
+	Name: <%= @home.team.name %><br>
+	Stadium: <%= @home.stadium %>
+
+</p>
+
+
+<%= link_to "Edit this home" , edit_home_path(@home) %> |
+<%= link_to "Back to homes listing", homes_path %>

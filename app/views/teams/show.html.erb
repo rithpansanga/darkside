@@ -1,0 +1,11 @@
+<h1>Showing </h1>
+
+<p>
+	Name: <%= @team.name %><br>
+	Coach: <%= @team.coach %>
+
+</p>
+
+
+<%= link_to "Edit this team" , edit_team_path(@team) %> |
+<%= link_to "Back to teams listing", teams_path %>

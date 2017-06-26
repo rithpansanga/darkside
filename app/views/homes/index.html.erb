@@ -1,0 +1,32 @@
+<h1> Listing Teams</h1>
+<%= link_to "Create new team", new_home_path %>
+
+
+<table>
+	
+<tr>
+	
+<th>Stadium</th>
+<th>Team</th>
+</tr>
+
+
+<% @homes.each do |home| %>
+
+<tr>
+
+	<td><%= home.stadium %> </td>
+	<td><%= home.team.name %> </td>
+	<td><%= link_to "Edit", edit_home_path(home) %></td>
+	<td><%= link_to "Show", home_path(home) %></td>
+	<td><%= link_to "Delete", home_path(home), method: :delete, data:{confirm: "Are you sure?"} %></td>
+	
+
+</tr>
+<% end %>
+
+
+</table>
+
+<br><br>
+<%= link_to "Back to League listing", leagues_path %>

@@ -1,0 +1,35 @@
+
+<% if @team.errors.any? %>
+
+
+<ul>
+	<% @team.errors.full_messages.each do |msg| %>
+
+	<li><%= msg %></li>
+
+	<% end %>
+</ul>
+
+
+<% end %>
+
+
+<%= form_for @team do |f| %>
+
+ 	<p>
+ 		<%= f.label :name %>
+ 		<%= f.text_field :name %>
+ 		<%= f.label :coach %>
+ 		<%= f.text_field :coach %>
+ 		<%= f.collection_select :league_id, League.all, :id, :name %>
+ 	</p>
+
+ 	<p>
+
+ 		<%= f.submit %>
+
+ 	<p>
+
+<% end %>
+
+<%= link_to "Back to Team listing", teams_path %>
