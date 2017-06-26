@@ -1,0 +1,33 @@
+
+<% if @league.errors.any? %>
+
+
+<ul>
+	<% @league.errors.full_messages.each do |msg| %>
+
+	<li><%= msg %></li>
+
+	<% end %>
+</ul>
+
+
+<% end %>
+
+
+<%= form_for @league do |f| %>
+
+ 	<p>
+ 		<%= f.label :name %>
+ 		<%= f.text_field :name %>
+ 	</p>
+
+ 	<p>
+
+ 		<%= f.submit %>
+
+ 	</p>
+
+
+<% end %>
+
+<%= link_to "Back to League listing", leagues_path %>
