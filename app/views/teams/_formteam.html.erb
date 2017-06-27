@@ -12,24 +12,28 @@
 
 
 <% end %>
-
+<div class="row">
+  <div class="col-xs-5 col-md-offset-4" >
 
 <%= form_for @team do |f| %>
 
  	<p>
  		<%= f.label :name %>
- 		<%= f.text_field :name %>
- 		<%= f.label :coach %>
- 		<%= f.text_field :coach %>
+ 		<%= f.text_field :name %><br><br>
+ 		<%= f.label :Manager %>
+ 		<%= f.text_field :coach %><br><br>
  		<%= f.collection_select :league_id, League.all, :id, :name %>
  	</p>
 
  	<p>
 
- 		<%= f.submit %>
+ 		
+ 	<button type="submit" class="btn btn-info" >Create</button>
 
- 	<p>
+ 	</p>
 
 <% end %>
+</div>
+</div>
 
-<%= link_to "Back to Team listing", teams_path %>
+<%= link_to "Back to Team listing", teams_path , class: "btn btn-primary" %>

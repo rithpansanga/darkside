@@ -1,30 +1,38 @@
 
+<div class="row">
+
+	<div class="col-md-4 col-md-offset-4">
 
 
-<table>
+
+		<table class="table table-bordered">
 	
-<tr>
+		<tr>
 	
-<th>Home</th>
-<th>Score</th>
-<th>Away</th>
+		<th>Home</th>
+		<th>Score</th>
+		<th>Away</th>
 
-</tr>
-
-
-<% @matches.each do |match| %>
-
-<tr>
-
-	<td><%= match.home.team.name %> </td>
-
-	<td><%= match.hscore %> - <%= match.ascore %> </td>
+		</tr>
 
 
-	<td><%= match.away.team.name %> </td>
+		<% @matches.each do |match| %>
 
-</tr>
-<% end %>
+		<tr>
+
+			<td><%= link_to match.home.team.name, team_path(match.home) %> </td>
+			
+
+			<td><%= link_to match.hscore, match_path(match)  %> - <%= link_to match.ascore,match_path(match) %> </td>
 
 
-</table>
+			<td><%= link_to match.away.team.name, team_path(match.home) %> </td>
+
+		</tr>
+		<% end %>
+
+		</table>
+
+	</div>
+
+</div>

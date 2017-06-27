@@ -1,9 +1,11 @@
 <h1>Showing </h1>
 
 <p>
-	Home: <%= @match.home.team.name %> <br>
-	Score: <%= @match.result %> <br>
-	Away: <%= @match.away.team.name %> 
+ <%= @match.home.team.name %> 
+	<%= @match.hscore %> - <%= @match.ascore %> 
+<%= @match.away.team.name %> <br>
+
+Stadium: <%= link_to @match.home.stadium, home_path(@match) %>
 
 </p>
 

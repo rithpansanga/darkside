@@ -1,13 +1,24 @@
 <h1> Listing Aways</h1>
-<%= link_to "Create new away", new_away_path %>
+<%= link_to "Create new away", new_away_path ,class: "btn btn-primary" %>
 
 
-<table>
+
+<div class="row">
+
+	<div class="col-md-4 col-md-offset-4">
+
+
+
+		<table class="table table-bordered">
+
+
 	
 <tr>
 	
-<th>Stadium</th>
+
 <th>Team</th>
+<th colspan="3">Function</th>
+
 </tr>
 
 
@@ -17,9 +28,9 @@
 
 	
 	<td><%= away.team.name %> </td>
-	<td><%= link_to "Edit", edit_away_path(away) %></td>
-	<td><%= link_to "Show", away_path(away) %></td>
-	<td><%= link_to "Delete", away_path(away), method: :delete, data:{confirm: "Are you sure?"} %></td>
+	<td><%= link_to "Edit", edit_away_path(away),class: "btn btn-primary"  %></td>
+	<td><%= link_to "Show", away_path(away),class: "btn btn-info"  %></td>
+	<td><%= link_to "Delete", away_path(away),class: "btn btn-danger",  method: :delete, data:{confirm: "Are you sure?"} %></td>
 	
 
 </tr>
@@ -27,6 +38,8 @@
 
 
 </table>
+</div>
+</div>
 
 <br><br>
-<%= link_to "Back to League listing", leagues_path %>
+<%= link_to "Back to Away listing", aways_path,class: "btn btn-primary"  %>

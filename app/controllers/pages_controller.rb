@@ -17,6 +17,10 @@ class PagesController <ApplicationController
 
 	def dark
 
+
+		
+		
+
 		@matches = Match.all
 
 	end

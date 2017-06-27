@@ -14,19 +14,33 @@
 <% end %>
 
 
+<div class="row">
+
+	<div class="col-md-4 col-md-offset-4">
+
+
+
 <%= form_for @match do |f| %>
 
  	<p>
- 		<%= f.label :result %>
- 		<%= f.text_field :result %>
- 		<%= f.collection_select(:home_id, Home.all, :id, :team_name) %>
+ 	
+ 
  		<%= f.label :hscore %>
  		<%= f.text_field :hscore %>
- 
- 		<%= f.collection_select(:away_id, Away.all, :id, :team_name) %>
+ 		<%= f.collection_select(:home_id, Home.all, :id, :team_name) %><br>
+ 		
+
  		<%= f.label :ascore %>
  		<%= f.text_field :ascore %>
+ 		<%= f.collection_select(:away_id, Away.all, :id, :team_name) %>
+ 		<br>
 
+ 				<%= f.label :result %>
+ 	
+ 		<%= f.text_field :result %>
+
+<div class="row">
+  <div class="col-xs-5 col-md-offset-4" >
 		<div class="form-group">
 	        <div class='input-group date' id='datetimepicker1'>
 	            <input type='text' class="form-control" name="match[date]" />
@@ -36,19 +50,24 @@
 	        </div>
 	    </div>		 		
  		 <% # ender "matches/datepicker" %>
- 		
+ 		</div>
+ 		</div>
  	</p>
 
  	<p>
 
- 		<%= f.submit %>
+ 	<button type="submit" class="btn btn-info" >Create</button>
+
+
 
  	</p>
 
 
 <% end %>
+</div>
+</div>
 
-<%= link_to "Back to League listing", leagues_path %>
+<%= link_to "Back to Match listing", matches_path , class: "btn btn-primary" %>
 
 <script type="text/javascript">
     $(function () {

@@ -1,13 +1,22 @@
 <h1> Listing Teams</h1>
-<%= link_to "Create new team", new_team_path %>
+<%= link_to "Create new team", new_team_path, class: "btn btn-primary" %>
 
 
-<table>
+
+<div class="row">
+
+	<div class="col-md-4 col-md-offset-4">
+
+
+
+		<table class="table table-bordered">
+
 	
 <tr>
 	
 <th>Name</th>
 <th>League</th>
+<th colspan="3">Function</th>
 </tr>
 
 
@@ -17,9 +26,9 @@
 
 	<td><%= team.name %> </td>
 	<td><%= team.league.name %> </td>
-	<td><%= link_to "Edit", edit_team_path(team) %></td>
-	<td><%= link_to "Show", team_path(team) %></td>
-	<td><%= link_to "Delete", team_path(team), method: :delete, data:{confirm: "Are you sure?"} %></td>
+	<td><%= link_to "Edit", edit_team_path(team),class: "btn btn-primary" %></td>
+	<td><%= link_to "Show", team_path(team),class: "btn btn-info" %></td>
+	<td><%= link_to "Delete", team_path(team),class: "btn btn-danger", method: :delete, data:{confirm: "Are you sure?"} %></td>
 	
 
 </tr>
@@ -27,7 +36,9 @@
 
 
 </table>
+</div>
+</div>
 
 <br><br>
-<%= link_to "Back to League listing", leagues_path %>
-<%= link_to "Back to Home listing", homes_path %>
+<%= link_to "Back to League listing", leagues_path,class: "btn btn-primary" %>
+<%= link_to "Back to Home listing", homes_path ,class: "btn btn-primary"%>

@@ -16,6 +16,7 @@ class MatchesController <ApplicationController
 		
 
 		@match = Match.new(match_params)
+	
 		if @match.save
 			flash[:notice] = "match was succesfully created"
 			redirect_to match_path(@match)
@@ -35,6 +36,7 @@ class MatchesController <ApplicationController
 	def show
 
 		@match = Match.find(params[:id])
+		
 
 	end
 

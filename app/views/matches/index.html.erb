@@ -1,38 +1,56 @@
 <h1> Listing All Match </h1>
-<%= link_to "Create new match", new_match_path %>
+<%= link_to "Create new match", new_match_path, class: "btn btn-primary" %>
 
 
-<table>
-	
-<tr>
-	
-<th>Home</th>
-<th>Score</th>
-<th>Away</th>
-<th>Date</th>
-</tr>
+<div class="row">
+
+	<div class="col-md-4 col-md-offset-4">
 
 
-<% @matches.each do |match| %>
 
-<tr>
-
-	<td><%= match.home.team.name %> </td>
-
-	<td><%= match.hscore %> - <%= match.ascore %> </td>
+		<table class="table table-bordered">
 
 
-	<td><%= match.away.team.name %> </td>
-	<td><%= match.date %> </td>
-	<td><%= link_to "Edit", edit_match_path(match) %></td>
-	<td><%= link_to "Show", match_path(match) %></td>
-	<td><%= link_to "Delete", match_path(match), method: :delete, data:{confirm: "Are you sure?"} %></td>
+			
+		<tr>
+			
+		<th>Home</th>
+		<th>Score</th>
+		<th>Away</th>
+		<th>Date</th>
+		<th colspan="3">Function</th>
+		</tr>
 
-</tr>
-<% end %>
+
+		<% @matches.each do |match| %>
+
+		<tr>
+
+			<td><%= match.home.team.name %> </td>
+
+			<td><%= match.hscore %> - <%= match.ascore %> </td>
 
 
-</table>
+			<td><%= match.away.team.name %> </td>
+			<td><%= match.date %> </td>
+			<td><%= link_to "Edit", edit_match_path(match),class: "btn btn-primary" %></td>
+			<td><%= link_to "Show", match_path(match), class: "btn btn-info" %></td>
+			<td><%= link_to "Delete", match_path(match), class: "btn btn-danger",method: :delete, data:{confirm: "Are you sure?"} %></td>
 
-<%= link_to "Back to Team listing", teams_path %>|
-<%= link_to "Back to Home listing", homes_path %>
+		</tr>
+		<% end %>
+
+
+		</table>
+
+		</div>
+		</div>
+		<footer>
+		<div class="center">
+
+		<%= link_to "Back to Team listing", teams_path ,class: "btn btn-primary"%>
+		<%= link_to "Back to Home listing", homes_path ,class: "btn btn-primary"%>
+		</div>i
+
+
+		</footer>
