@@ -65,7 +65,7 @@ def index
 		
 	private 
 		def home_params
-			params.require(:home).permit(:stadium,:team_id)
+			params.require(:home).permit(:stadium,:hscore,:team_id)
 			
 		end
 	

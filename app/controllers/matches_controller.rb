@@ -7,14 +7,14 @@ class MatchesController <ApplicationController
 		@match = Match.new
 		@homes = Home.all
 		@aways = Away.all
+		
 
 	end
 
 	def create
 
+		
 
-		@homes = Home.all
-		@aways = Away.all
 		@match = Match.new(match_params)
 		if @match.save
 			flash[:notice] = "match was succesfully created"
@@ -22,7 +22,6 @@ class MatchesController <ApplicationController
 		else 
 			render 'new'
 		end
-
 	end
 
 	def index
@@ -71,7 +70,7 @@ class MatchesController <ApplicationController
 
 	private 
 		def match_params
-			params.require(:match).permit(:result,:home_id,:away_id)
+			params.require(:match).permit(:result, :home_id, :away_id, :hscore, :ascore, :date)
 			
 		end
 

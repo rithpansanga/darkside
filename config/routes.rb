@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 root 'pages#main'
 
+get 'darkside', to:'pages#dark'
+
 resources :leagues 
 resources :teams
 resources :homes

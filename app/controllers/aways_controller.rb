@@ -65,7 +65,7 @@ def index
 		
 	private 
 		def away_params
-			params.require(:away).permit(:stadium,:team_id)
+			params.require(:away).permit(:stadium,:ascore,:team_id)
 			
 		end
 	

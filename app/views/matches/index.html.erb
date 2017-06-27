@@ -9,7 +9,7 @@
 <th>Home</th>
 <th>Score</th>
 <th>Away</th>
-
+<th>Date</th>
 </tr>
 
 
@@ -18,9 +18,12 @@
 <tr>
 
 	<td><%= match.home.team.name %> </td>
-	<td><%= match.result %></td>
+
+	<td><%= match.hscore %> - <%= match.ascore %> </td>
+
 
 	<td><%= match.away.team.name %> </td>
+	<td><%= match.date %> </td>
 	<td><%= link_to "Edit", edit_match_path(match) %></td>
 	<td><%= link_to "Show", match_path(match) %></td>
 	<td><%= link_to "Delete", match_path(match), method: :delete, data:{confirm: "Are you sure?"} %></td>

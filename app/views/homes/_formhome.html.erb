@@ -20,6 +20,8 @@
  	<p>
  		<%= f.label :stadium %>
  		<%= f.text_field :stadium %>
+ 		<%= f.label :hscore %>
+ 		<%= f.text_field :hscore %>
  		<%= f.collection_select :team_id, Team.all, :id, :name %>
  		
  		

@@ -1,0 +1,30 @@
+
+
+
+<table>
+	
+<tr>
+	
+<th>Home</th>
+<th>Score</th>
+<th>Away</th>
+
+</tr>
+
+
+<% @matches.each do |match| %>
+
+<tr>
+
+	<td><%= match.home.team.name %> </td>
+
+	<td><%= match.hscore %> - <%= match.ascore %> </td>
+
+
+	<td><%= match.away.team.name %> </td>
+
+</tr>
+<% end %>
+
+
+</table>
