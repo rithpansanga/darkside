@@ -19,9 +19,11 @@ class PagesController <ApplicationController
 
 
 		
-		
+		@scoretables =Scoretable.all
 
 		@matches = Match.all
+		@teams = Team.all
+		@matchcount = Match.where(home_id:[:id]).count 
 
 	end
 

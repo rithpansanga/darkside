@@ -26,7 +26,7 @@
 			<td><%= link_to match.hscore, match_path(match)  %> - <%= link_to match.ascore,match_path(match) %> </td>
 
 
-			<td><%= link_to match.away.team.name, team_path(match.home) %> </td>
+			<td><%= link_to match.away.team.name, team_path(match.away) %> </td>
 
 		</tr>
 		<% end %>
@@ -35,4 +35,29 @@
 
 	</div>
 
-</div>
+</div><br>
+
+<table class="table table-bordered">
+
+<tr>
+<th>Rank</th>
+<th>Name</th>
+<th>Match</th>
+<th>Point</th>
+</tr>
+
+
+
+<% @teams.each_with_index do |team, index| %> 
+	<tr>
+	<td><%= index + 1 %></td>
+	<td><%= team.name %> </td>
+	<td><%= team.homes.first.matches.count + team.aways.first.matches.count %> </td>
+
+					
+
+</tr>
+		<% end %>
+
+
+</table>
