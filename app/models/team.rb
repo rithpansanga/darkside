@@ -15,11 +15,14 @@ class Team < ActiveRecord::Base
 
       	@teams.each do |team|
       		score = 0;
-      		team.homes.each do |home|
-      			if home.matches.result == "W"
+
+          home_matches = Match.where(home_id: team.id)
+          home_matches.each do |m|
+
+      			if m.result == "W"
 
       				score = score + 3
-      			elsif home.matches.result == "D"
+      			elsif m.result == "D"
 
       				score = score + 1
       			else
@@ -31,12 +34,12 @@ class Team < ActiveRecord::Base
       				
 
       		end
-
-      		team.aways.each do |away|
-      			if away.matches.result == "L"
+         away_matches = Match.where(away_id: team.id)
+          away_matches.each do |a|
+      			if a.result == "L"
 
       				score = score + 3
-      			elsif away.matches.result == "D"
+      			elsif a.result == "D"
 
       				score = score + 1
       			else
