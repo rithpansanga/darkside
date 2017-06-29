@@ -4,6 +4,7 @@ class Team < ActiveRecord::Base
   has_many :scoretables
   has_many :homes
   has_many :aways
+  belongs_to :match
 
   validates :league_id, presence:true
 

@@ -20,13 +20,13 @@
 
 		<tr>
 
-			<td><%= link_to match.home.team.name, team_path(match.home) %> </td>
+			<td><%= link_to match.home.name, team_path(match.home) %> </td>
 			
 
 			<td><%= link_to match.hscore, match_path(match)  %> - <%= link_to match.ascore,match_path(match) %> </td>
 
 
-			<td><%= link_to match.away.team.name, team_path(match.away	) %> </td>
+			<td><%= link_to match.away.name, team_path(match.away) %> </td>
 
 		</tr>
 		<% end %>
@@ -40,10 +40,16 @@
 <table class="table table-bordered">
 
 <tr>
-<th>Rank</th>
-<th>Name</th>
-<th>Match</th>
-<th>Point</th>
+<th>Position</th>
+<th>Club</th>
+<th>Played</th>
+<th>Won</th>
+<th>Drawn</th>
+<th>Lost</th>
+<th>GF</th>
+<th>GA</th>
+<th>GD</th>
+<th>Points</th>
 </tr>
 
 
@@ -53,7 +59,18 @@
 	<td><%= index + 1 %></td>
 	<td><%= team.name %> </td>
 	<td><%= Match.where(home_id: team.id).count + Match.where(away_id: team.id).count %> </td>
-	<td><%= Scoretable.where(team_id: team.id).pluck(:point).sum %></td>
+
+	<td> <%= Scoretable.where(team_id: team.id).sum(:won) %></td>
+	<td><%= Scoretable.where(team_id: team.id).sum(:drawn) %></td>
+	<td><%= Scoretable.where(team_id: team.id).sum(:lost) %></td>
+	<td> <%= Scoretable.where(team_id: team.id).sum(:gf) %></td>
+	<td><%= Scoretable.where(team_id: team.id).sum(:ga) %></td>
+	<td><%= Scoretable.where(team_id: team.id).sum(:gd) %></td>
+	<td><%= Scoretable.where(team_id: team.id).sum(:point) %></td>
+
+
+
+
 
 
 					
