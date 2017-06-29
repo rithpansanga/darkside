@@ -52,7 +52,9 @@
 	<tr>
 	<td><%= index + 1 %></td>
 	<td><%= team.name %> </td>
-	<td><%= team.homes.first.matches.count + team.aways.first.matches.count %> </td>
+	<td><%= Match.where(home_id: team.id).count + Match.where(away_id: team.id).count %> </td>
+	<td><%= Scoretable.where(team_id: team.id).pluck(:point).sum %></td>
+
 
 					
 
