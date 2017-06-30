@@ -9,29 +9,9 @@ class MatchesController <ApplicationController
   def create
     @match = Match.new(match_params)
 
-    if @match.hscore > @match.ascore
-  
-      winteam = Scoretable.new(team_id: @match.home_id , point: 3 , won:1 , gf: @match.hscore , ga: @match.ascore ,gd: @match.hscore - @match.ascore)
-      loseteam = Scoretable.new(team_id: @match.away_id, point: 0 , lost:1 , gf: @match.ascore , ga: @match.hscore ,gd: @match.ascore - @match.hscore)
-    
-      winteam.save
-      loseteam.save
-
-    elsif @match.hscore < @match.ascore
-      winteam = Scoretable.new(team_id: @match.home_id , point: 0, lost:1 , gf: @match.hscore , ga: @match.ascore,gd: @match.hscore - @match.ascore )
-      loseteam = Scoretable.new(team_id: @match.away_id, point: 3, won:1 , gf: @match.hscore , ga: @match.ascore,gd: @match.ascore - @match.hscore)
-      winteam.save
-      loseteam.save
-
-    elsif @match.hscore = @match.ascore
-      winteam = Scoretable.new(team_id: @match.home_id , point: 1 ,drawn:1 , gf: @match.hscore , ga: @match.ascore,gd: @match.hscore - @match.ascore)
-      loseteam = Scoretable.new(team_id: @match.away_id, point: 1 ,drawn:1 , gf: @match.hscore , ga: @match.ascore ,gd: @match.ascore - @match.hscore)
+    Match.calscore @match
 
 
-      winteam.save
-      loseteam.save
-
-    end
 
     if @match.save
       flash[:notice] = "match was succesfully created"
@@ -55,9 +35,8 @@ class MatchesController <ApplicationController
 
   def update
     @match = Match.find(params[:id])
-
-
     if @match.update(match_params)
+      Match.calscore @match
       flash[:notice] = "Match was successfully updated"
       redirect_to match_path(@match)
     else
@@ -67,7 +46,11 @@ class MatchesController <ApplicationController
 
   def destroy
     @match = Match.find(params[:id])
+ 
+    Match.deletescore @match
     @match.destroy
+
+  
     flash[:notice] = "Match was successfully deleted"
     redirect_to matches_path
   end

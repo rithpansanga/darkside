@@ -2,8 +2,57 @@
 
 <p>
 	Name: <%= @team.name %><br>
-	Manager: <%= @team.coach %>
+	Manager: <%= @team.coach %><br>
 
+  History:
+  <table class="table table-bordered">
+    <tr class="tab">
+        <th>Home</th>
+        <th>Score</th>
+        <th>Away</th>
+        <th>Date</th>
+    </tr>
+        
+       <% Match.where(home: @team).each do |match| %>
+    <tr>
+       <td><%= match.home.name %></td>
+       <td><%= match.hscore %> - <%= match.ascore %></td>
+       <td><%= match.away.name %></td>
+       <td><%= match.date %></td>
+    </tr>
+      
+      <% end %>
+  </table>
+
+
+
+    <% Match.where(home: @team).each do |f| %>
+
+    <%= f.date %>
+
+    <% end %>
+
+
+    <% html = "http://uk.soccerway.com/teams/england/arsenal-fc/660/matches/" %>
+    <% doc = Nokogiri::HTML(open(html)) %>
+      <table class="table table-bordered">
+    <tr class="tab">
+        <th>Home</th>
+        <th>Away</th>
+    
+    </tr>
+    <%  doc.css(".score-time a, .team-a a, .team-b a" ).each do |t| %>
+    <tr>
+     <% home = t.text.strip %>
+    <td><%= "#{home}" %></td> 
+
+
+
+
+    </tr>
+    <% end %>
+
+    </table>
 </p>
 
 

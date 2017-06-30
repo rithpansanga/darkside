@@ -26,12 +26,12 @@
 
 		<tr>
 
-			<td><%= match.home.team.name %> </td>
+			<td><%= match.home.name %> </td>
 
 			<td><%= match.hscore %> - <%= match.ascore %> </td>
 
 
-			<td><%= match.away.team.name %> </td>
+			<td><%= match.away.name %> </td>
 			<td><%= match.date %> </td>
 			<td><%= link_to "Edit", edit_match_path(match),class: "btn btn-primary" %></td>
 			<td><%= link_to "Show", match_path(match), class: "btn btn-info" %></td>
