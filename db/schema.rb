@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629073213) do
+ActiveRecord::Schema.define(version: 20170703085106) do
 
   create_table "aways", force: :cascade do |t|
     t.string  "stadium"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 20170629073213) do
     t.integer  "hscore"
     t.integer  "ascore"
     t.datetime "date"
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.string  "home"
+    t.string  "away"
+    t.integer "hscore"
+    t.integer "ascore"
+    t.string  "date"
   end
 
   create_table "scoretables", force: :cascade do |t|

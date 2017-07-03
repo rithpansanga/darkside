@@ -25,6 +25,8 @@ class TeamsController <ApplicationController
   def index
 
     @teams= Team.all
+    
+
 
   end
 
@@ -50,6 +52,10 @@ class TeamsController <ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    Team.showrecord
+    @record = Record.where("hscore < ?", 10) 
+
+
 
 
   end

@@ -20,42 +20,26 @@
        <td><%= match.away.name %></td>
        <td><%= match.date %></td>
     </tr>
-      
       <% end %>
   </table>
-
-
-
     <% Match.where(home: @team).each do |f| %>
-
     <%= f.date %>
-
     <% end %>
-
-
-    <% html = "http://uk.soccerway.com/teams/england/arsenal-fc/660/matches/" %>
-    <% doc = Nokogiri::HTML(open(html)) %>
       <table class="table table-bordered">
     <tr class="tab">
         <th>Home</th>
-        <th>Away</th>
-    
+        <th>Score</th>
+        <th>Away</th> 
     </tr>
-    <%  doc.css(".score-time a, .team-a a, .team-b a" ).each do |t| %>
+    <% @record.each do |record| %>
     <tr>
-     <% home = t.text.strip %>
-    <td><%= "#{home}" %></td> 
-
-
-
-
+      <td><%= record.home %></td>
+      <td><%= record.hscore %> - <%= record.ascore %></td>
+      <td><%= record.away %></td>
     </tr>
     <% end %>
-
-    </table>
+      </table>
 </p>
-
-
 <%= link_to "Edit this team" , edit_team_path(@team) %> |
 <%= link_to "Back to teams listing", teams_path %> |
 <%= link_to "Back to main page", darkside_path %>
