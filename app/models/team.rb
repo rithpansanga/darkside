@@ -2,11 +2,12 @@ class Team < ActiveRecord::Base
     
   belongs_to :league
   has_many :scoretables
-  has_many :homes
-  has_many :aways
+  # has_many :homes
+  # has_many :aways
+  has_many :records
   #belongs_to :match
-
   validates :league_id, presence:true
+
   def self.showrecord
     url = "http://uk.soccerway.com/teams/england/manchester-city-football-club/676/matches/"
     agent = Mechanize.new
@@ -23,7 +24,10 @@ class Team < ActiveRecord::Base
            hscore = score[0].to_i
            ascore = score[2].to_i
            away = t[2].text.strip
-           r = Record.create(home: home, away: away, hscore: hscore, ascore: ascore)
+           h = Team.find_or_create_by(name: home)
+           a = Team.find_or_create_by(name: away)
+
+           r = Record.create(home_id: h.id, away_id: a.id, hscore: hscore, ascore: ascore)
         end  
   end
 end

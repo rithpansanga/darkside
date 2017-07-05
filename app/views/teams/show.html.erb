@@ -33,9 +33,9 @@
     </tr>
     <% @record.each do |record| %>
     <tr>
-      <td><%= record.home %></td>
+      <td><%= record.hteam.name %></td>
       <td><%= record.hscore %> - <%= record.ascore %></td>
-      <td><%= record.away %></td>
+      <td><%= record.ateam.name %></td>
     </tr>
     <% end %>
       </table>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703085106) do
+ActiveRecord::Schema.define(version: 20170705040637) do
 
   create_table "aways", force: :cascade do |t|
     t.string  "stadium"
@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 20170703085106) do
   end
 
   create_table "records", force: :cascade do |t|
-    t.string  "home"
-    t.string  "away"
     t.integer "hscore"
     t.integer "ascore"
     t.string  "date"
+    t.integer "home_id"
+    t.integer "away_id"
   end
 
   create_table "scoretables", force: :cascade do |t|
