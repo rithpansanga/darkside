@@ -53,7 +53,7 @@ class TeamsController <ApplicationController
   def show
     @team = Team.find(params[:id])
     Team.showrecord
-    @record = Record.where("hscore < ?", 10) 
+    @record = Record.where(home_id: @team).or(Record.where(away_id: @team)) 
 
 
 

@@ -44,3 +44,21 @@
 
 </div>
 </div>
+<br>
+
+  <table class="table table-bordered" >
+  <tr class="tab">
+  <th>Home</th>
+  <th>%</th>
+  <th>Away</th>
+  </tr>
+  <tr>
+  <% @matches.each do |match| %>
+  <td><%= match.home.name %></td>
+  <td><%= calper(match.home.id,match.away.id)%></td>
+  <td><%= match.away.name %></td>
+   </tr>
+
+  <% end %>
+  </tr>
+  </table>
