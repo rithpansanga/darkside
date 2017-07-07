@@ -51,12 +51,10 @@ class TeamsController <ApplicationController
   
 
   def show
-    @team = Team.find(params[:id])
-    Team.showrecord
+    @team = Team.find(params[:id]) 
+    #Team.addsquad
+    #Team.showrecord
     @record = Record.where(home_id: @team).or(Record.where(away_id: @team)) 
-
-
-
 
   end
 

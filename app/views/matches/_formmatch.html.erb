@@ -32,7 +32,9 @@
 
  		<%= f.label :ascore %>
  		<%= f.text_field :ascore %>
- 		<%= f.collection_select(:away_id, Team.all, :id, :name) %>
+ 		<%= f.collection_select(:away_id, Team.all, :id, :name) %><br>
+    <%= f.label :ratio %>
+    <%= f.text_field :ratio %>
  		<br>
 
 <div class="row">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705080339) do
+ActiveRecord::Schema.define(version: 20170707091423) do
 
   create_table "aways", force: :cascade do |t|
     t.string  "stadium"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170705080339) do
     t.integer  "hscore"
     t.integer  "ascore"
     t.datetime "date"
+    t.float    "ratio"
   end
 
   create_table "records", force: :cascade do |t|
@@ -55,6 +56,12 @@ ActiveRecord::Schema.define(version: 20170705080339) do
     t.integer "gf"
     t.integer "ga"
     t.integer "gd"
+  end
+
+  create_table "squads", force: :cascade do |t|
+    t.string  "name"
+    t.string  "position"
+    t.integer "team_id"
   end
 
   create_table "teams", force: :cascade do |t|

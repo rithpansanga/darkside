@@ -1,0 +1,57 @@
+ <table class="table table-bordered">
+    <tr class="tab">
+        
+        <th>Goalkeeper</th>
+    </tr>
+    <% Squad.where(team_id: @team).each do |t| %>
+    <% if t.position == "Goalkeeper" %>
+    <tr>
+     <td><%= t.name %></td>
+   
+    </tr>
+    <% end %>
+    <% end %>
+  </table>
+   <table class="table table-bordered">
+    <tr class="tab">
+        
+        <th>Defender</th>
+    </tr>
+    <% Squad.where(team_id: @team).each do |t| %>
+    <% if t.position == "Defender" %>
+    <tr>
+     <td><%= t.name %></td>
+   
+    </tr>
+    <% end %>
+    <% end %>
+  </table>
+   <table class="table table-bordered">
+    <tr class="tab">
+        
+        <th>Midfielder</th>
+    </tr>
+    <% Squad.where(team_id: @team).each do |t| %>
+    <% if t.position == "Midfielder" %>
+    <tr>
+     <td><%= t.name %></td>
+   
+    </tr>
+    <% end %>
+    <% end %>
+  </table>
+     <table class="table table-bordered">
+    <tr class="tab">
+        
+        <th>Attacker</th>
+    </tr>
+    <% Squad.where(team_id: @team).each do |t| %>
+    <% if t.position == "Attacker" %>
+    <tr>
+     <td><%= t.name %></td>
+   
+    </tr>
+    <% end %>
+    <% end %>
+  </table>
+  

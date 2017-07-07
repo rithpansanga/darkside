@@ -2,17 +2,15 @@ class Team < ActiveRecord::Base
     
   belongs_to :league
   has_many :scoretables
-  # has_many :homes
-  # has_many :aways
   has_many :records
+  has_many :squads
+
   #belongs_to :match
   validates :league_id, presence:true
+ 
 
   def self.showrecord
-    url = "http://uk.soccerway.com/teams/england/afc-bournemouth/711/matches/"
-    # agent = Mechanize.new
-    # page = agent.get(url)
-
+    url = "http://127.0.0.1:3000/test"
     doc = Nokogiri::HTML(open(url))
         doc.css(".score-time a, .team-a a, .team-b a" ).each_slice(3).to_a.each  do |t| 
           
@@ -21,8 +19,8 @@ class Team < ActiveRecord::Base
            hscore = score[0].to_i
            ascore = score[2].to_i
            away = t[2].text.strip
-           h = Team.find_or_create_by(name: home)
-           a = Team.find_or_create_by(name: away)
+           hometeam = Team.find_or_create_by(name: home)
+           awayteam = Team.find_or_create_by(name: away)
            if hscore > ascore
            result = "W"
            elsif hscore < ascore
@@ -31,7 +29,24 @@ class Team < ActiveRecord::Base
            result = "D"
            end
 
-           r = Record.create(home_id: h.id, away_id: a.id, hscore: hscore, ascore: ascore, result: result)
+           r = Record.create(home_id: hometeam.id, away_id: awayteam.id, hscore: hscore, ascore: ascore, result: result, date: "2015/2016")
         end    
   end
+
+  def self.addsquad
+    url = "http://uk.soccerway.com/teams/england/afc-bournemouth/711/"
+    doc = Nokogiri::HTML(open(url))
+    doc.css("#page_team_1_block_team_squad_8-table div:nth-child(1)").each do |t|
+    player = t.text.strip
+
+    r = Squad.create(name: player, team_id: 2) 
+
+    end
+
+
+
+  end
+
+
+
 end
