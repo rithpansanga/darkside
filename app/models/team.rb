@@ -29,12 +29,12 @@ class Team < ActiveRecord::Base
            result = "D"
            end
 
-           r = Record.create(home_id: hometeam.id, away_id: awayteam.id, hscore: hscore, ascore: ascore, result: result, date: "2015/2016")
+           r = Record.create(home_id: hometeam.id, away_id: awayteam.id, hscore: hscore, ascore: ascore, result: result, date: "2014/2015")
         end    
   end
 
   def self.addsquad
-    url = "http://uk.soccerway.com/teams/england/afc-bournemouth/711/"
+    url = "http://uk.soccerway.com/teams/england/arsenal-fc/660/"
     doc = Nokogiri::HTML(open(url))
     doc.css("#page_team_1_block_team_squad_8-table div:nth-child(1)").each do |t|
     player = t.text.strip

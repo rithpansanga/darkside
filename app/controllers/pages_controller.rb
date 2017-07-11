@@ -12,7 +12,7 @@ class PagesController < ApplicationController
   end
 
   def test
-    url = "http://uk.soccerway.com/a/block_competition_matches?block_id=page_competition_1_block_competition_matches_5&callback_params=%7B%22page%22%3A%22-11%22%2C%22bookmaker_urls%22%3A%7B%2213%22%3A%5B%7B%22link%22%3A%22http%3A%2F%2Fwww.bet365.com%2Fhome%2F%3Faffiliate%3D365_178981%22%2C%22name%22%3A%22Bet%20365%22%7D%5D%7D%2C%22block_service_id%22%3A%22competition_matches_block_competitionmatches%22%2C%22round_id%22%3A%2231553%22%2C%22outgroup%22%3A%22%22%2C%22view%22%3A%222%22%7D&action=changePage&params=%7B%22page%22%3A-12%7D"
+    url = "http://uk.soccerway.com/a/block_competition_matches?block_id=page_competition_1_block_competition_matches_5&callback_params=%7B%22page%22%3A%22-11%22%2C%22bookmaker_urls%22%3A%7B%2213%22%3A%5B%7B%22link%22%3A%22http%3A%2F%2Fwww.bet365.com%2Fhome%2F%3Faffiliate%3D365_178981%22%2C%22name%22%3A%22Bet%20365%22%7D%5D%7D%2C%22block_service_id%22%3A%22competition_matches_block_competitionmatches%22%2C%22round_id%22%3A%2225191%22%2C%22outgroup%22%3A%22%22%2C%22view%22%3A%222%22%7D&action=changePage&params=%7B%22page%22%3A-12%7D"
     res = RestClient.get(url)
     content = JSON.parse(res.body)
     @html_body = content["commands"][0]["parameters"]["content"]

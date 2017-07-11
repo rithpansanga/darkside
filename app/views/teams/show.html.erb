@@ -3,11 +3,7 @@
 <p>
 	Name: <%= @team.name %><br>
 	Manager: <%= @team.coach %><br>
-
-  Squad:
  <%= render "table" %>
-
-   
       <table class="table table-bordered">
     <tr class="tab">
         <th>Home</th>
@@ -17,7 +13,7 @@
 
 
   
-    <% i = "2016/2017" %>
+  
     <% @record.each do |record| %>
     <tr>
       <td><%= record.hteam.name %></td>

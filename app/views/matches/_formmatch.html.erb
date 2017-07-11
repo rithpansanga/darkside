@@ -23,16 +23,17 @@
 <%= form_for @match do |f| %>
 
  	<p>
- 	
+ 	  
+ 
  
  		<%= f.label :hscore %>
  		<%= f.text_field :hscore %>
- 		<%= f.collection_select(:home_id, Team.all, :id, :name) %><br>
+ 		<%= f.grouped_collection_select(:home_id, League.order(:name),:teams,:name,  :id, :name) %><br>
  		
 
  		<%= f.label :ascore %>
  		<%= f.text_field :ascore %>
- 		<%= f.collection_select(:away_id, Team.all, :id, :name) %><br>
+ 		<%= f.grouped_collection_select(:away_id, League.order(:name),:teams,:name, :id, :name) %><br>
     <%= f.label :ratio %>
     <%= f.text_field :ratio %>
  		<br>

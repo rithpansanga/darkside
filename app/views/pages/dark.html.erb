@@ -6,9 +6,9 @@
   </tr>
   <tr>
   <% @matches.each do |match| %>
-  <td><%= match.home.name %></td>
+  <td><%= link_to match.home.name, team_path(match.home.id) %></td>
   <td><%= calper(match.home.id,match.away.id)%></td>
-  <td><%= match.away.name %></td>
+  <td><%= link_to match.away.name, team_path(match.away.id) %></td>
    </tr>
 
   <% end %>
