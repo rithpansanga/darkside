@@ -17,6 +17,7 @@ $navbar-default-bg: black;
 
 .center{
 	text-align:center;
+  color: black;
 }
 
 
@@ -25,9 +26,10 @@ $navbar-default-bg: black;
 	color: white;
 }
 
-.button {
-   
-   
+.headimage {
+
+
+
 }
 
 #alpha{
@@ -39,7 +41,14 @@ $navbar-default-bg: black;
 
     background-color: #38003c;
 }
-
+.tab2{
+  color: black;
+  background-color: #bbb;
+}
+.tab3{
+  color: black;
+  background-color: white;
+}
 .item-d {
   grid-area: 1 / col4-start / last-line / 6
 }

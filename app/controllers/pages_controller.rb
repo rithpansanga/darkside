@@ -31,38 +31,69 @@ class PagesController < ApplicationController
    def calper(home_id,away_id)
       record = Record.where("hscore < ?",10)
       ar = record.where(home_id: home_id, away_id: away_id)
+      ch = record.where(home_id: away_id, away_id: home_id)
+      gd = 1
       gd1 = ar.sum(:hscore) - ar.sum(:ascore)
-      gd2 = ar.count
-      gd3 = gd1 / gd2
+      gd2 = ar.count + gd
+      gdd2 = gd2.to_f
+      gdd1 = gd1.to_f
+      gd3 = gdd1 / gdd2
       ra = Match.where(home_id: home_id, away_id: away_id)
       ratio = ra.first.ratio
-      result = gd3.to_f - ratio
+      result = ratio + gd3.to_f 
       per = 0
       if result == 0
         per = 50
       elsif result > 0 and result < 0.30
-        per = 55
+        per = 52
       elsif result >= 0.30 and result <= 0.5  
-        per = 58
+        per = 54
 
       elsif result > 0.5 and result <= 0.75
-        per = 60
-
+        per = 56
       elsif result > 0.75 and result < 1
-        per = 65
+        per = 58
       elsif result >= 1
-        per = 68
-      elsif result <= -0.25
-        per = 45
-      elsif result <= -0.5
-        per = 40
-      elsif result <= -0.75
-        per = 35
+        per = 60
+      elsif result < 0 and result >= -0.25 
+        per = 48
+      elsif result < -0.25 and result >= -0.5
+        per = 46
+      elsif result < -0.52 and  result >= -0.7
+        per = 44
       else
-        per = 30
+        per = 40
       end
+      mt = ar.count + ch.count
+      aw = ar.where(result: "W")
+      cw = ch.where(result: "L")
+      wt = aw.count + cw.count
+      matchtotal = mt.to_f
+      wintotal = wt.to_f
+      winrate = wintotal / matchtotal
+      if winrate >= 50 and winrate < 55
+        winrate = 1
+      elsif winrate >= 55 and winrate < 60
+        winrate = 2
+      elsif winrate >= 60 and winrate < 65 
+        winrate = 3
+      elsif winrate >= 65
+        winrate = 4
+        
+      elsif winrate < 50 and winrate >= 45
+        winrate = -1
+      elsif winrate < 45  and winrate >= 40
+        winrate = -2
+      elsif winrate < 40 and winrate >= 35 
+        winrate = -3
+      elsif winrate < 35
+        winrate = -4
+      end
+        
+        
+      per = per 
 
-      return per     
+      return per    
 
 
           
