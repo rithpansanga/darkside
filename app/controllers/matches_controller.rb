@@ -1,4 +1,8 @@
 class MatchesController <ApplicationController
+  before_action :set_match, only: [:edit, :update, :show, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit,:update,:destroy]
+
   
   def new
     @match = Match.new
@@ -26,15 +30,15 @@ class MatchesController <ApplicationController
   end
 
   def show
-    @match = Match.find(params[:id])
+
   end
 
   def edit
-    @match = Match.find(params[:id])
+  
   end  
 
   def update
-    @match = Match.find(params[:id])
+
     if @match.update(match_params)
       Match.calscore @match
       flash[:notice] = "Match was successfully updated"
@@ -45,7 +49,7 @@ class MatchesController <ApplicationController
   end
 
   def destroy
-    @match = Match.find(params[:id])
+
  
     Match.deletescore @match
     @match.destroy
@@ -60,4 +64,16 @@ class MatchesController <ApplicationController
   def match_params
     params.require(:match).permit(:result, :home_id, :away_id, :hscore, :ascore, :date, :ratio)
   end
+  def set_match
+    @match = Match.find(params[:id])
+  end
+  def require_same_user
+    if !current_user.admin?
+      flash[:danger] = "You're not admin"
+      redirect_to darkside_path
+    end
+
+  end
+
+
 end
