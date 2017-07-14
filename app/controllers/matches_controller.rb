@@ -30,19 +30,22 @@ class MatchesController <ApplicationController
   end
 
   def show
+    @record = Record.all
 
   end
 
   def edit
+    @squad = Squad.all
   
   end  
 
   def update
-
+  #raise inspect.params
     if @match.update(match_params)
       Match.calscore @match
       flash[:notice] = "Match was successfully updated"
       redirect_to match_path(@match)
+      
     else
       render 'edit'
     end

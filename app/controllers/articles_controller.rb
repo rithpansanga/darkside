@@ -18,7 +18,7 @@ class ArticlesController <ApplicationController
 
   @article = Article.new(article_params)
 
-  @article.user = User.last
+  @article.user = current_user
 
   if @article.save
 

@@ -6,7 +6,7 @@ class Team < ActiveRecord::Base
   has_many :squads
 
   #belongs_to :match
-  validates :league_id, presence:true
+  #validates :league_id, presence:true
  
 
   def self.showrecord
@@ -28,8 +28,13 @@ class Team < ActiveRecord::Base
            elsif hscore =  ascore
            result = "D"
            end
+           if hscore >= 8
 
-           r = Record.create(home_id: hometeam.id, away_id: awayteam.id, hscore: hscore, ascore: ascore, result: result, date: "2014/2015")
+
+           else
+            r = Record.create(home_id: hometeam.id, away_id: awayteam.id, hscore: hscore, ascore: ascore, result: result)
+        
+           end
         end    
   end
 

@@ -19,7 +19,15 @@ $navbar-default-bg: black;
 	text-align:center;
   color: black;
 }
-
+.right{
+  text-align:right;
+}
+.left{
+  text-align:left;
+}
+.no-padding{
+  padding: 0;
+}
 
 
 .white{
@@ -87,5 +95,7 @@ padding-bottom: 15px;
 border-top: 1px solid #eaeaea;
 
 margin-top: 15px;
-
+}
+.red{
+  color: red;
 }

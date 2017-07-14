@@ -1,14 +1,39 @@
 <h1>Showing </h1>
-
+<% hid = @match.home.id %>
+<% aid = @match.away.id %>
+<div class="row">
+<div class="col-md-5 col-md-offset-3">
 <p>
- <%= @match.home.name %> 
-	<%= @match.hscore %> - <%= @match.ascore %> 
-<%= @match.away.name %> <br>
-
-
-
+<table class="table table-bordered" >
+  <tr class="tab">
+ <th><%= @match.home.name %> </th>
+ <th><%= @match.away.name %> </th>
+	</tr>
+  <tr>
+  <th colspan="2" class="center">Last 5 matches</th>
+  
+  </tr>
+  <tr>
+  <td>AVG GF: <%= @record.where(home_id: hid).sum(:hscore) / 5.0 %> | AVG GA: <%= @record.where(home_id: hid).sum(:ascore) / 5.0 %> </td>
+  <td>AVG GF: <%= @record.where(away_id: aid).sum(:ascore) / 5.0 %> | AVG GA: <%= @record.where(away_id: aid).sum(:hscore) / 5.0 %> </td>
+  </tr>
+  </table>
 </p>
+</div>
+</div>
 
+<table class="table table-bordered" >
+  <tr class="red">
+<th>Line up</th>
+</tr>
+<tr>
+  <% Squad.where(team_id: hid).each do |squad| %>
+  <% if squad.xl == 1 %>
+  <td><%= squad.name %></td>
+  <% end %>
+</tr>
+<% end %>
+</table>
 
 <%= link_to "Edit this match" , edit_match_path(@match) %> |
 <%= link_to "Back to match listing", matches_path %> |

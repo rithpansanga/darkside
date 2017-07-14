@@ -23,7 +23,8 @@
     <% @matches.each do |match| %>
     <% if match.home.league_id == league.id %>
     <td><%= link_to match.home.name, team_path(match.home.id) %>*</td>
-    <td class='tab2'><%= calper(match.home.id,match.away.id)%></td>
+    <% arr = calper(match.home.id,match.away.id)%>
+    <td class='tab2'><%= link_to '%.02f%' % arr , match_path(match) %></td>
     <td><%= link_to match.away.name, team_path(match.away.id) %></td>
     <td><%= match.ratio %></td>
     <% end %>
@@ -38,13 +39,13 @@
   <div class="col-md-7 col-md-offset-2">
  <table class="table table-bordered" >
   <tr class="tab3">
-  <th>Article</th>  
+  <th colspan="2">Article</th>  
+
   </tr>
   <tr>
     <% Article.all.each do |article| %>
-    <td><%= link_to article.title, article_path(article) %> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-    <%= link_to article.user.username, user_path(article.user) %></td> 
- 
+     <td><%= link_to article.title, article_path(article) %></td>
+    <td><%= link_to article.user.username, user_path(article.user) %></td>
      </tr>
    <% end %>
   </tr>
