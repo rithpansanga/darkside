@@ -52,7 +52,7 @@ class TeamsController <ApplicationController
 
   def show
     @team = Team.find(params[:id]) 
-    #Team.addsquad
+    Team.addsquad
     #Team.showrecord
     @record = Record.where(home_id: @team).or(Record.where(away_id: @team)) 
 
@@ -71,7 +71,7 @@ class TeamsController <ApplicationController
 
   private 
     def team_params
-      params.require(:team).permit(:name,:coach,:league_id)
+      params.require(:team).permit(:name,:coach,:league_id,:avatar)
       
     end
 

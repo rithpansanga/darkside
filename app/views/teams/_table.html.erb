@@ -6,7 +6,7 @@
     <% Squad.where(team_id: @team).each do |t| %>
     <% if t.position == "Goalkeeper" %>
     <tr>
-     <td><%= t.name %> </td>
+     <td><%= link_to t.name, squad_path(t) %> </td>
 
 
 
@@ -25,7 +25,7 @@
     <% Squad.where(team_id: @team).each do |t| %>
     <% if t.position == "Defender" %>
     <tr>
-     <td><%= t.name %></td>
+     <td><%= link_to t.name, squad_path(t) %></td>
    
     </tr>
     <% end %>
@@ -39,7 +39,7 @@
     <% Squad.where(team_id: @team).each do |t| %>
     <% if t.position == "Midfielder" %>
     <tr>
-     <td><%= t.name %></td>
+     <td><%= link_to t.name, squad_path(t) %></td>
    
     </tr>
     <% end %>
@@ -53,7 +53,7 @@
     <% Squad.where(team_id: @team).each do |t| %>
     <% if t.position == "Attacker" %>
     <tr>
-     <td><%= t.name %></td>
+     <td><%= link_to t.name, squad_path(t) %></td>
    
     </tr>
     <% end %>

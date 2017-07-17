@@ -4,6 +4,8 @@ class Team < ActiveRecord::Base
   has_many :scoretables
   has_many :records
   has_many :squads
+  mount_uploader :avatar, AvatarUploader
+
 
   #belongs_to :match
   #validates :league_id, presence:true
@@ -39,12 +41,12 @@ class Team < ActiveRecord::Base
   end
 
   def self.addsquad
-    url = "http://uk.soccerway.com/teams/england/arsenal-fc/660/"
+    url = "http://uk.soccerway.com/teams/england/chelsea-football-club/661/"
     doc = Nokogiri::HTML(open(url))
     doc.css("#page_team_1_block_team_squad_8-table div:nth-child(1)").each do |t|
     player = t.text.strip
 
-    r = Squad.create(name: player, team_id: 2) 
+    r = Squad.create(name: player, team_id: 5) 
 
     end
 

@@ -22,10 +22,10 @@
   <tr>
     <% @matches.each do |match| %>
     <% if match.home.league_id == league.id %>
-    <td><%= link_to match.home.name, team_path(match.home.id) %>*</td>
+    <td><%= link_to match.home.name, team_path(match.home.id) %> <%= image_tag(match.home.avatar.thumb.url ,size: "25x25") if match.home.avatar? %></td>
     <% arr = calper(match.home.id,match.away.id)%>
     <td class='tab2'><%= link_to '%.02f%' % arr , match_path(match) %></td>
-    <td><%= link_to match.away.name, team_path(match.away.id) %></td>
+    <td><%= link_to match.away.name, team_path(match.away.id) %> <%= image_tag(match.away.avatar.thumb.url ,size: "25x25") if match.away.avatar? %></td>
     <td><%= match.ratio %></td>
     <% end %>
      </tr>

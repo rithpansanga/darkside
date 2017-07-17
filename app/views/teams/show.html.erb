@@ -1,6 +1,7 @@
-<h1>Showing </h1>
+
 
 <p>
+  <%= image_tag(@team.avatar.thumb.url ,size: "150x150") if @team.avatar? %><br>
 	Name: <%= @team.name %><br>
 	Manager: <%= @team.coach %><br>
  <%= render "table" %>
@@ -16,6 +17,7 @@
   
     <% @record.each do |record| %>
     <tr>
+
       <td><%= record.hteam.name %></td>
       <td><%= record.hscore %> - <%= record.ascore %></td>
       <td><%= record.ateam.name %></td>

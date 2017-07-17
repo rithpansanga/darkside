@@ -1,0 +1,24 @@
+<h1>Showing </h1>
+
+<div class="left"> <%= image_tag(@squad.avatar.thumb.url ,size: "150x150") if @squad.avatar? %></div>
+
+<div class="col-md-5 col-md-offset-3">
+
+    <table class="table table-bordered">
+    <tr class="tab2">
+        <th>Information</th>
+       
+    </tr>
+  <td><b>Name:</b> <%= @squad.name %><br></td>
+  <tr><td><b>Date of birth:</b> <%= @squad.birth %></td></tr>
+  <tr><td><b>Nationality:</b> <%= @squad.nationality %></td></tr>
+  <tr><td><b>Foot:</b> <%= @squad.foot %></td></tr>
+  <tr><td><b>Position:</b> <%= @squad.position %></td></tr>
+  <tr><td><b>Team:</b> <%= @squad.team.name %></td></tr>
+</tr>
+  </table>
+
+<%= link_to "Edit this squad" , edit_squad_path(@squad) %> |
+<%= link_to "Back to squads listing", squads_path %>
+</div>
+

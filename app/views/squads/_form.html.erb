@@ -1,0 +1,46 @@
+
+<% if @squad.errors.any? %>
+
+
+<ul>
+  <% @league.errors.full_messages.each do |msg| %>
+
+  <li><%= msg %></li>
+
+  <% end %>
+</ul>
+
+
+<% end %>
+
+
+<%= form_for @squad, :html => {:multipart => true} do |f| %>
+  <p>
+   
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+        <%= f.label :foot %>
+    <%= f.text_field :foot %>
+        <%= f.label :birth %>
+    <%= f.text_field :birth %>
+        <%= f.label :nationality %>
+    <%= f.text_field :nationality %>
+    <%= f.label :position %>
+    <%= f.text_field :position %>
+     <%= f.label :xl %>
+    <%= f.text_field :xl %>
+    <%= f.grouped_collection_select(:team_id, League.order(:name),:teams,:name,  :id, :name) %>
+    <%= f.file_field :avatar %>
+  
+  </p>
+
+  <p>
+
+    <%= f.submit %>
+
+  </p>
+
+
+<% end %>
+
+<%= link_to "Back to Squad listing", squads_path %>

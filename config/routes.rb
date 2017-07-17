@@ -13,7 +13,8 @@ get 'login', to: 'sessions#new'
 post 'login', to: 'sessions#create'
 delete 'logout', to: 'sessions#destroy'
 
-resources :leagues 
+resources :leagues
+resources :squads 
 resources :teams
 resources :homes
 resources :aways
