@@ -1,6 +1,6 @@
 <h1>Showing </h1>
 
-<div class="left"> <%= image_tag(@squad.avatar.thumb.url ,size: "150x150") if @squad.avatar? %></div>
+<div class="left"> <%= image_tag( @squad.avatar.present? ? @squad.avatar.thumb.url : "", size: "150x150") %></div>
 
 <div class="col-md-5 col-md-offset-3">
 
@@ -15,6 +15,14 @@
   <tr><td><b>Foot:</b> <%= @squad.foot %></td></tr>
   <tr><td><b>Position:</b> <%= @squad.position %></td></tr>
   <tr><td><b>Team:</b> <%= @squad.team.name %></td></tr>
+
+    <tr><td><b>Goals:</b> <%= @squad.goal %></td></tr>
+    <tr><td><b>Goals Per Match:</b> <%= @squad.gpm %></td></tr>
+    <tr><td><b>Assist:</b> <%= @squad.assist %></td></tr>
+    <tr><td><b>Tackles:</b> <%= @squad.tackle %></td></tr>
+    <tr><td><b>Blockshots:</b> <%= @squad.blockshot %></td></tr>
+    <tr><td><b>Interceptions:</b> <%= @squad.interception %></td></tr>
+    <tr><td><b>Clearances:</b> <%= @squad.clearance %></td></tr>
 </tr>
   </table>
 

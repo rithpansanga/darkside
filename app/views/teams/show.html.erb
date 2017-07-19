@@ -1,30 +1,41 @@
-
-
+<head>
+<h1><%= @team.name.upcase %></h1>
+</head>
 <p>
   <%= image_tag(@team.avatar.thumb.url ,size: "150x150") if @team.avatar? %><br>
-	Name: <%= @team.name %><br>
-	Manager: <%= @team.coach %><br>
- <%= render "table" %>
-      <table class="table table-bordered">
-    <tr class="tab">
-        <th>Home</th>
-        <th>Score</th>
-        <th>Away</th> 
-    </tr>
 
 
-  
-  
-    <% @record.each do |record| %>
+
+<div class="row">
+<div class="col-md-6" >
+    <table class="table table-bordered">
+    <th class="red" colspan="3">Home</th>
+    <% @recordh.each do |record| %>
     <tr>
 
-      <td><%= record.hteam.name %></td>
+      <td><%= link_to record.hteam.name, '#' %></td>
       <td><%= record.hscore %> - <%= record.ascore %></td>
-      <td><%= record.ateam.name %></td>
+      <td><%= link_to record.ateam.name, team_path(record.ateam) %></td>
+    </tr>
+    <% end %>
+      </table></div>
+      <div class="col-md-6">
+      <table class="table table-bordered">
+      
+    <th class="red" colspan="3">Away</th>
+    <% @recorda.each do |record| %>
+    <tr>
+
+      <td><%= link_to record.hteam.name, team_path(record.hteam) %></td>
+      <td><%= record.hscore %> - <%= record.ascore %></td>
+      <td><%= link_to record.ateam.name, "#" %></td>
     </tr>
     <% end %>
       </table>
+      </div>
+  </div>
+ 
+  <div class="col-md-8 col-md-offset-2">
+    <%= render "table" %>
+  </div>
 </p>
-<%= link_to "Edit this team" , edit_team_path(@team) %> |
-<%= link_to "Back to teams listing", teams_path %> |
-<%= link_to "Back to main page", darkside_path %>

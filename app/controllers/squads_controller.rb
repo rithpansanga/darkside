@@ -25,6 +25,7 @@ class SquadsController <ApplicationController
 
   def show
     @squad = Squad.find(params[:id])
+    Squad.addstatst
     
   end
 
@@ -57,7 +58,8 @@ class SquadsController <ApplicationController
 
   private 
     def squad_params
-      params.require(:squad).permit(:name,:position,:team_id,:xl,:avatar,:foot,:birth,:nationality)
+      params.require(:squad).permit(:name,:position,:team_id,:xl,:avatar,:foot,:birth,:nationality,:goal,:gpm,:assist,:tackle,
+        :blockshot,:interception, :clearance)
       
     end
 

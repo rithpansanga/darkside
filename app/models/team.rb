@@ -9,6 +9,7 @@ class Team < ActiveRecord::Base
 
   #belongs_to :match
   #validates :league_id, presence:true
+  validates :name,uniqueness: { case_sensitive: false }
  
 
   def self.showrecord
@@ -49,6 +50,20 @@ class Team < ActiveRecord::Base
     r = Squad.create(name: player, team_id: 5) 
 
     end
+
+  def self.add
+    url = "http://uk.soccerway.com/teams/russia/fk-lokomotiv-moscow/1843/"
+    doc = Nokogiri::HTML(open(url))
+    i = 0;
+    doc.css("#page_team_1_block_team_squad_7-table a").each do |t|
+      r = t[i+1].text
+      re = Squad.create(name: r, team_id: 61) 
+      i = i+1
+
+    end
+    
+  end
+
 
 
 

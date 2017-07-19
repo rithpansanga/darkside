@@ -1,62 +1,77 @@
+
+<% s = Squad.where(team_id: @team).group_by(&:position)%>
+<% g = s["Goalkeeper"] %>
+ <% if g.nil? %>
+
+ <% else %>
  <table class="table table-bordered">
-    <tr class="tab">
-        
-        <th>Goalkeeper</th>
+    <tr class="tab2">   
+        <th colspan="2">Goalkeeper</th>
     </tr>
-    <% Squad.where(team_id: @team).each do |t| %>
-    <% if t.position == "Goalkeeper" %>
-    <tr>
-     <td><%= link_to t.name, squad_path(t) %> </td>
 
-
-
-
-
-   
-    </tr>
-    <% end %>
+    <%  g.each_with_index do |t, index| %>
+        <% if index%2 == 0 %>
+          <tr>
+            <td><%= image_tag(t.avatar.thumb.url ,size: "50x50")if t.avatar? %><%= link_to t.name, squad_path(t) %> <br></td>
+        <% else %>
+            <td><%= image_tag(t.avatar.thumb.url ,size: "50x50")if t.avatar? %><%= link_to t.name, squad_path(t) %></td>
+          </tr>
+        <% end %>
     <% end %>
   </table>
+   <% g = s["Defender"] %>
    <table class="table table-bordered">
-    <tr class="tab">
-        
-        <th>Defender</th>
+    <tr class="tab2">   
+        <th colspan="2">Defender</th>
     </tr>
-    <% Squad.where(team_id: @team).each do |t| %>
-    <% if t.position == "Defender" %>
-    <tr>
-     <td><%= link_to t.name, squad_path(t) %></td>
-   
-    </tr>
-    <% end %>
+
+    <%  g.each_with_index do |t, index| %>
+        <% if index%2 == 0 %>
+          <tr>
+            <td><%= image_tag(t.avatar.thumb.url ,size: "50x50")if t.avatar? %><%= link_to t.name, squad_path(t) %> <br></td>
+        <% else %>
+            <td><%= image_tag(t.avatar.thumb.url ,size: "50x50")if t.avatar? %><%= link_to t.name, squad_path(t) %></td>
+          </tr>
+        <% end %>
     <% end %>
   </table>
+  <% g = s["Midfielder"] %>
    <table class="table table-bordered">
-    <tr class="tab">
-        
-        <th>Midfielder</th>
+    <tr class="tab2">   
+        <th colspan="2">Midfielder</th>
     </tr>
-    <% Squad.where(team_id: @team).each do |t| %>
-    <% if t.position == "Midfielder" %>
-    <tr>
-     <td><%= link_to t.name, squad_path(t) %></td>
-   
-    </tr>
-    <% end %>
-    <% end %>
-  </table>
-     <table class="table table-bordered">
-    <tr class="tab">
-        
-        <th>Attacker</th>
-    </tr>
-    <% Squad.where(team_id: @team).each do |t| %>
-    <% if t.position == "Attacker" %>
-    <tr>
-     <td><%= link_to t.name, squad_path(t) %></td>
-   
-    </tr>
-    <% end %>
+
+    <%  g.each_with_index do |t, index| %>
+        <% if index%2 == 0 %>
+          <tr>
+            <td><%= image_tag(t.avatar.thumb.url ,size: "50x50")if t.avatar? %><%= link_to t.name, squad_path(t) %> <br></td>
+        <% else %>
+            <td><%= image_tag(t.avatar.thumb.url ,size: "50x50")if t.avatar? %><%= link_to t.name, squad_path(t) %></td>
+          </tr>
+        <% end %>
     <% end %>
   </table>
+  <% g = s["Attacker"] %>
+   <table class="table table-bordered">
+    <tr class="tab2">   
+        <th colspan="2">Attacker</th>
+    </tr>
+
+    <%  g.each_with_index do |t, index| %>
+        <% if index%2 == 0 %>
+          <tr>
+            <td><%= image_tag(t.avatar.thumb.url ,size: "50x50")if t.avatar? %><%= link_to t.name, squad_path(t) %> <br></td>
+        <% else %>
+            <td><%= image_tag(t.avatar.thumb.url ,size: "50x50")if t.avatar? %><%= link_to t.name, squad_path(t) %></td>
+          </tr>
+        <% end %>
+    <% end %>
+  </table>
+   <% end %>   
+      <%= link_to "Edit this team" , edit_team_path(@team) %> |
+<%= link_to "Back to teams listing", teams_path %> |
+<%= link_to "Back to main page", darkside_path %> 
+   
+
+
   
