@@ -21,7 +21,7 @@
 </p>
 </div>
 </div>
-
+<div class="row">
 <div class="col-md-5">
 <table class="table table-bordered" >
   <tr class="red">
@@ -49,6 +49,38 @@
 </tr>
 <% end %>
 </table>
+</div>
+  <div class="row">
+  <div class="col-md-5">
+    <table class="table table-bordered"> 
+    <tr class="red">
+    <th colspan="3">Home</th>
+    </tr>
+    <tr>
+      <% Record.where(home_id: hid).each do |record| %>
+      <td><%= link_to record.hteam.name, "#"  %></td>
+      <td><%= record.hscore %> - <%= record.ascore %></td>
+      <td><%= link_to record.ateam.name , team_path(record.ateam) %></td>
+    </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="col-md-5">
+    <table class="table table-bordered"> 
+    <tr class="red">
+    <th colspan="3">Away</th>
+    </tr>
+    <tr>
+      <% Record.where(away_id: aid).each do |record| %>
+      <td><%= link_to record.hteam.name , team_path(record.hteam)  %></td>
+      <td><%= record.hscore %> - <%= record.ascore %></td>
+      <td><%= link_to record.ateam.name, "#" %></td>
+    </tr>
+      <% end %>
+    </table>
+  </div>
+  </div>
 
 <%= link_to "Edit this match" , edit_match_path(@match) %> |
 <%= link_to "Back to match listing", matches_path %> |

@@ -12,16 +12,20 @@
 <div class="row">
   <div class="col-md-5 col-md-offset-3">
  
-
- <% League.all.each do |league| %>
- <table class="table table-bordered" >
+ <% league = findmatch %>
+ <% league.each do |league| %>
+        <table class="table table-bordered" >
   <tr class="tab">
   <th colspan="3"><%= league.name %></th>
   <th>Ratio</th>  
   </tr>
-  <tr>
-    <% @matches.each do |match| %>
+
+    <% @matches.each do |match| %>  
+
     <% if match.home.league_id == league.id %>
+  
+  <tr>
+
     <td><%= link_to match.home.name, team_path(match.home.id) %> <%= image_tag(match.home.avatar.thumb.url ,size: "25x25") if match.home.avatar? %></td>
     <% arr = calper(match.home.id,match.away.id)%>
     <td class='tab2'><%= link_to '%.02f%' % arr , match_path(match) %></td>

@@ -25,7 +25,7 @@ class SquadsController <ApplicationController
 
   def show
     @squad = Squad.find(params[:id])
-    Squad.addstatst
+    \Squad.addstatst
     
   end
 
